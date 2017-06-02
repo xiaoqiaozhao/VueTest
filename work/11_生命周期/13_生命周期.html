@@ -6,7 +6,8 @@
 </head>
 <body>
 <div id="test">
-
+    <button @click="destroyVue">destroy vue</button>
+    <p v-show="show">atguigu</p>
 </div>
 <!--
 vue对象的生命周期
@@ -25,28 +26,39 @@ vue对象的生命周期
     new Vue({
         el:"#test",
         methods:{
+            destroyVue(){
+
+            }
 
         },
-        created(){
+        created(){//在此启动异步任务。如ajax请求、定时器
+            console.log("在实例创建之后同步调用。$el 还不存在")
+            /*普通定时的this是window，这里需要把this变为vm实例对象。
+            * 方法一：使用箭头函数
+            * 方法二：强制绑定*/
+
+            setInterval(function(){
+
+
+            },1000)
+            jxidjeicdivjiji
 
         },
-//        编译前
+
         beforeCompile(){
-
+            console.log("在编译开始前调用");
         },
-//        编译完后
         compiled(){
-
+            console.log("在编译结束后调用");
         },
-//
         ready(){
-
+            console.log("在编译结束和 $el 第一次插入文档之后调用");
         },
-        beforeDestroy(){
-
+        beforeDestroy(){//在此做一些收尾的工作，如清理定时器
+            console.log("在开始销毁实例时调用");
         },
         destroyed(){
-
+            console.log("在实例被销毁之后调用");
         }
     })
 
