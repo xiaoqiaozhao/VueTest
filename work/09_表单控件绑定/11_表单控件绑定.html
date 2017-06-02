@@ -15,11 +15,64 @@
 3. 延迟指定时间才更新: debounce='1000'
 -->
 <div id="demo">
+    <!--文本框-->
+    <span>Message is:{{msg}}</span>
+    <input type="text" v-model="msg">
+    <textarea v-model="msg"></textarea>
+    <hr>
+    <!--单选框-->
+    <input type="checkbox" v-model="checked">
+    <label for="checkbox">{{checked}}</label>
+    <hr>
+    <!--多选框-->
+    <input type="checkbox" value="Jack" v-model="friends">
+    <label for="Jack">Jack</label>
+    <input type="checkbox" value="John" v-model="friends">
+    <label for="John">John</label>
+    <input type="checkbox" value="Mike" v-model="friends">
+    <label for="Mike">Mike</label>
+    <span>Checked names:{{friends | json}}</span>
+    <hr>
+    <!--多选按钮-->
+    <input type="radio" id="female" value="female" v-model="sex">
+    <label for="female">female</label>
+    <input type="radio" id="male" value="male" v-model="sex">
+    <label for="male">male</label>
+    <span>Sex:{{sex}}</span>
+    <hr>
+    <!--下拉菜单-->
+    <select v-model="cityId">
+        <option value="" >未选择</option>
+        <option value="" v-for="city in citys" :value="city.id">{{city.name}}</option>
+    </select>
+    <span>selection:{{cityId}}</span>
+    <hr>
+    <!--失去焦点后才更新--lazy-->
+    <input type="text" placeholder="失去焦点后才更新" v-model="msg" lazy>
+    <p>输入的数据为{{msg}}</p>
+    <!--延迟更新--debounce-->
+    <input type="text" placeholder="延迟1s更新" v-model="msg" debounce="1000">
+    <p>输入的数据为{{msg}}</p>
 
 </div>
-
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+    new Vue({
+        el:"#demo",
+        data:{
+            msg:'atguigu.com',
+            checked:false,
+            friends:["John"],
+            sex:'',
+            citys:[
+                {id:1,name:'BJ'},
+                {id:2,name:'SH'},
+                {id:3,name:'GZ'}
+            ],
+            cityId:1
+
+        }
+    })
 </script>
 </body>
 </html>

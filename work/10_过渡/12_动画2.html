@@ -3,14 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <title>12_动画2</title>
+    <style>
+        /*bounce--弹回*/
+        .bounce-transition{
+            display: inline-block;/*需要做此设置，否则scale不起作用*/
+        }
+        /*向里弹*/
+        .bounce-enter{
+            animation:bounce-in .5s;
+        }
+        /*向外弹*/
+        .bounce-leave{
+            animation:bounce-out .5s;
+        }
+        @keyframes bounce-in {
+            0%{
+                transform:scale(0) ;
+            }
+            50%{
+                transform:scale(1.5) ;
+            }
+            100%{
+                transform:scale(1) ;
+            }
+        }
+        @keyframes bounce-out {
+            0%{
+                transform:scale(1) ;
+            }
+            50%{
+                transform:scale(1.5) ;
+            }
+            100%{
+                transform:scale(0) ;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <div id="anim" class="demo">
+    <div v-show="show" :transition="xxx">hello</div>
+    <br>
+    <button @click="show = !show">切换</button>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script>
+    new Vue({
+        el:"#anim",
+        data:{
+            show:true,
+            xxx:"bounce"
+        }
+    })
 </script>
 </body>
 </html>

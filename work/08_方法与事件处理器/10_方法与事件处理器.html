@@ -29,8 +29,17 @@
 
 
     <h2>2. 事件修饰符</h2>
+    <!--停止冒泡行为--.stop-->
+        <div style="width: 300px;height: 300px;background: pink" @click="test4">test4
+            <div style="width: 200px;height: 200px;background: yellowgreen" @click.stop="test5">test5</div>
+        </div>
+    <!--阻止事件的默认行为--.prevent-->
+        <a href="https://www.baidu.com/" @click.prevent="test6">百度一下</a>
+
 
     <h2>3. 按键修饰符</h2>
+    <input type="text" @keyup.enter="test7">
+    <input type="text" @keyup.13="test7">
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
@@ -41,15 +50,29 @@
 
         },
         methods:{
-            test1(){
-                alert("test1.clientY");
+            test1(event){
+                alert(event.clientY);
             },
-            test2(){
-                alert("test2.clientY");
+            test2(event){
+                alert(event.clientY);
             },
-            test3(){
-                alert("abc----event.clientY");
+            test3(msg,event){
+                alert(msg+"----"+event.clientY);
+            },
+            test4(){
+                alert("test4");
+            },
+            test5(){
+                alert("test5");
+            },
+            test6(){
+                alert("点击链接");
+            },
+            test7(event){
+//                输出往输入框输入的值
+                alert(event.target.value);
             }
+
         }
     })
 </script>

@@ -3,15 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <title>12_动画3</title>
+    <style>
+        ul{
+            list-style: none;
+            padding-left: 0;
+        }
+        /*staggered--英文意思错列的*/
+    </style>
+
 </head>
 <body>
 
 <div id="demo">
+    <input type="text" v-model="query">
+    <ul>
+        <li v-for="item in list | filterBy query"
+            transition="staggered"
+            stagger="100">
+            {{item.msg}}
+
+        </li>
+    </ul>
 
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script>
+    new Vue({
+        el:"#demo",
+        data:{
+            query:"",
+            list:[
+                {msg:"Bruce Lee"},
+                {msg:"Jackie Chan"},
+                {msg:"Chuck Norris"},
+                {msg:"Jet Li"},
+                {msg:"Kung Fury"}
+            ]
+        }
+    })
+  
 
 </script>
 </body>

@@ -5,7 +5,8 @@
   <title>13_生命周期</title>
 </head>
 <body>
-<div>
+<div id="test">
+
 </div>
 <!--
 vue对象的生命周期
@@ -21,6 +22,33 @@ vue对象的生命周期
 -->
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+    new Vue({
+        el:"#test",
+        methods:{
+
+        },
+        created(){
+
+        },
+//        编译前
+        beforeCompile(){
+
+        },
+//        编译完后
+        compiled(){
+
+        },
+//
+        ready(){
+
+        },
+        beforeDestroy(){
+
+        },
+        destroyed(){
+
+        }
+    })
 </script>
 </body>
 </html>

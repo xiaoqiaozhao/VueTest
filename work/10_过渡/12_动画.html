@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>12_动画1</title>
+    <meta charset="UTF-8">
+    <title>12_动画1</title>
+    <style>
+        /*展开时的过渡*/
+        .expand-transition{
+            transition: all 2s linear;
+            height:30px;
+            background: pink;
+            /*TODO   此处overflow:hidden作用不懂*/
+            overflow: hidden;
+        }
+        /* .expand-enter 定义进入的开始状态 */
+        /* .expand-leave 定义离开的结束状态 */
+        .expand-enter,.expand-leave{
+            height:0;
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
 <div id="demo">
+    <div v-show="show" :transition="expand">hello</div>
+    <button @click="show = !show">切换</button>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+    new Vue({
+        el:"#demo",
+        data:{
+            show:true,
+            expand:"expand"
+        }
+    })
 </script>
 </body>
 </html>
